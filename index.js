@@ -73,7 +73,7 @@ function SocksProxyAgent(opts) {
   if (proxy.auth) {
     var auth = proxy.auth.split(':');
     proxy.authentication = { username: auth[0], password: auth[1] };
-    proxy.userid = auth[0];
+    proxy.userId = auth[0];
   }
   this.proxy = proxy;
 }
@@ -131,8 +131,8 @@ SocksProxyAgent.prototype.callback = function connect(req, opts, fn) {
   };
 
   if (proxy.authentication) {
-    options.proxy.authentication = proxy.authentication;
-    options.proxy.userid = proxy.userid;
+    options.proxy.userId = proxy.userId;
+    options.proxy.password = proxy.authentication.password;
   }
 
   if (proxy.lookup) {
